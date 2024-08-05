@@ -22,5 +22,13 @@ describe('StringCalculator', function() {
     assert.strictEqual(calculator.add('1,2,3'), 6);
   });
 
+  it('should throw an exception for negative numbers', function() {
+    const calculator = new StringCalculator();
+    assert.throws(() => calculator.add('1,-2,3'), /negative numbers not allowed -2/);
+  });
 
+  it('should throw an exception listing all negative numbers', function() {
+    const calculator = new StringCalculator();
+    assert.throws(() => calculator.add('1,-2,-3,4'), /negative numbers not allowed -2,-3/);
+  });
 })
